@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: servidor-zuul
+server:
+  port: 7000
+zuul:
+  routes:
+    serv-vuelos: # servicio
+      path: /svuelos/**
+      serviceId: servicio-vuelos
+      #Si no se tiene laconfiguracion de un serviceId podmeos utilizar la
+      #direcicon real de nuestro servicio de la siguiente forma
+      #url. direccion  real
+    serv-hoteles:
+      path: /shoteles/**
+      serviceId: servicio-hoteles
+    serv-reservas:
+      path: /sreservas/**
+      serviceId: servicio-reservas
+
+#Se agrega la configuraicon de Eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
